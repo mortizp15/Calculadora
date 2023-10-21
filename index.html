@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
     <title>Calculadora</title>
     <style>
         *,
@@ -13,6 +14,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         .contenedor {
             width: 100%;
             height: 100vh;
@@ -23,9 +25,10 @@
         }
 
         .calculadora {
-            width: 22%;
+            max-width: 400px;
+            width: 20%;
             border-radius: 20px;
-            height: 60%;
+            height: 55%;
             background-color: aliceblue;
             position: fixed;
         }
@@ -40,54 +43,376 @@
         }
 
         .pantalla {
-            width: 90%;
-            height: 10%;
-            border-radius: 10px;
-            font-size: 3rem;
+            width: 82%;
+            height: 13%;
+            font-size: 2.5rem;
             margin: auto;
-            margin-top: 13%;
+            margin-top: 10%;
             display: flex;
             padding: 5%;
             align-items: center;
             justify-content: flex-end;
             color: #465485;
+            border-bottom: 2px solid #465485;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        button {
+            width: 3.3rem;
+            height: 3.3rem;
+            border-radius: 100%;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .grid-container-arriba {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            justify-content: center;
+            width: 60%;
+            height: 15%;
+            margin-bottom: 10px;
+        }
+
+        .grid-container-arriba button {
+            margin: 5px;
+        }
+
+        .grid-container-abajo {
+            width: 60%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            justify-content: center;
+        }
+
+        .grid-container-abajo button {
+            margin: 5px;
+        }
+
+        .operaciones2 {
+            background-color: #575688;
+            border: none;
+            font-weight: bold;
+        }
+
+        #estilo2 {
+            background-color: #575688;
+            border: none;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #cero {
+            width: 92%;
+            border-radius: 2rem;
+            grid-column: span 2;
+        }
+
+        .container-botones {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .num-igual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(252, 252, 252);
+            color: #465485;
+            font-weight: bold;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        .operaciones1 {
+            background-color: #dfe0ff;
+            border: none;
+            font-weight: bold;
+            color: #465485;
+        }
+
+        @media (max-width: 1832px) {
+            .calculadora {
+                width: 20%;
+                height: 50%;
+            }
+
+            .pantalla {
+                font-size: 2rem;
+            }
+
+            button {
+                width: 2.5rem;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 1493px) {
+            .calculadora {
+                width: 20%;
+                height: 50%;
+            }
+
+            .pantalla {
+                font-size: 2rem;
+            }
+
+            button {
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 1087px) {
+            .calculadora {
+                width: 30%;
+                height: 50%;
+            }
+
+            .pantalla {
+                font-size: 2rem;
+            }
+
+            button {
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calculadora {
+                width: 40%;
+                height: 60%;
+            }
+
+            .pantalla {
+                font-size: 2rem;
+            }
+
+            button {
+                width: 2.5rem;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calculadora {
+                width: 60%;
+            }
+
+            .pantalla {
+                font-size: 1.5rem;
+            }
+
+            button {
+                width: 2.3rem;
+                height: 2.3rem;
+            }
+        }
+
+        @media (max-width: 385px) {
+            .calculadora {
+                width: 70%;
+                height: 65%;
+            }
+
+            .pantalla {
+                font-size: 1.5rem;
+            }
+
+            button {
+                width: 2.3rem;
+                height: 2.3rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="contenedor">
         <div class="calculadora">
             <div class="pantalla">
-                <div class="resultado">0</div>
+                <div class="resultado"></div>
             </div>
-            <div class="grid-container-arriba">
-                <div class="operaciones1">AC</div>
-                <div class="operaciones1">√</div>
-                <div class="operaciones1">%</div>
-                <div class="operaciones1">/</div>
-            </div>
-            <div class="grid-container-abajo">
-                <div class="num-igual" id="7">7</div>
-                <div class="num-igual" id="8">8</div>
-                <div class="num-igual" id="9">9</div>
-                <div class="num-igual" id="4">4</div>
-                <div class="num-igual" id="5">5</div>
-                <div class="num-igual" id="6">6</div>
-                <div class="num-igual" id="1">1</div>
-                <div class="num-igual" id="2">2</div>
-                <div class="num-igual" id="3">3</div>
-                <div class="num-igual" id="0">0</div>
-                <div class="num-igual" id=".">.</div>
-                <div class="operaciones1">x</div>
-                <div class="operaciones1">-</div>
-                <div class="operaciones1">+</div>
-                <div class="operaciones1">=</div>
+            <div class="container-botones">
+                <div class="grid-container-arriba">
+                    <button id="svg" class="operaciones1">C</button>
+                    <button class="operaciones1">√</button>
+                    <button class="operaciones1">%</button>
+                    <button class="operaciones1" id="estilo2">/</button>
+                </div>
+                <div class="grid-container-abajo">
+                    <button class="num-igual" id="siete">7</button>
+                    <button class="num-igual" id="ocho">8</button>
+                    <button class="num-igual" id="nueve">9</button>
+                    <button class="operaciones2">x</button>
+                    <button class="num-igual" id="cuatro">4</button>
+                    <button class="num-igual" id="cinco">5</button>
+                    <button class="num-igual" id="seis">6</button>
+                    <button class="operaciones2">&minus;</button>
+                    <button class="num-igual" id="uno">1</button>
+                    <button class="num-igual" id="dos">2</button>
+                    <button class="num-igual" id="tres">3</button>
+                    <button class="operaciones2">+</button>
+                    <button class="num-igual" id="cero">0</button>
+                    <button class="num-igual" id="punto">.</button>
+                    <button class="operaciones2">=</button>
+                </div>
             </div>
         </div>
     </div>
     <footer>
-        <p>Hecho por <a href="#">mortizp15 💙</a></p>
+        <p>
+            Hecho por
+            <a target="_blank" href="https://github.com/mortizp15/Calculadora.git">mortizp15 💙</a>
+        </p>
     </footer>
-    <script type="text/javascript" src="/script.js"></script>
+    <script type="text/javascript">
+
+        let numeroActual = 0
+        let primerNumero = ''
+        let segundoNumero = ''
+        let operador = ''
+        let resultado = null
+
+        const capturarNumero = (numero) => {
+            if (resultado !== null) {
+                primerNumero = ''
+                segundoNumero = ''
+                operador = ''
+                resultado = null
+            }
+
+            if (operador === '') {
+                primerNumero += numero
+            } else {
+                segundoNumero += numero
+            }
+
+            actualizarPantalla()
+        }
+
+        const capturarOperador = (op) => {
+            if (resultado !== null) {
+                primerNumero = ''
+                segundoNumero = ''
+                operador = ''
+                resultado = null
+            }
+
+            if (primerNumero !== '' && segundoNumero !== '') {
+                realizarCalculo()
+            }
+
+            operador = op
+            actualizarPantalla()
+        }
+
+        const realizarCalculo = () => {
+            if (primerNumero !== '' && segundoNumero !== '' && operador !== '') {
+                const num1 = parseFloat(primerNumero)
+                const num2 = parseFloat(segundoNumero)
+
+                switch (operador) {
+                    case '+':
+                        resultado = num1 + num2
+                        break;
+                    case '-':
+                        resultado = num1 - num2
+                        break;
+                    case 'x':
+                        resultado = num1 * num2
+                        break;
+                    case '/':
+                        if (num2 !== 0)
+                            resultado = num1 / num2
+                        else {
+                            resultado = 'ERROR: Division por cero'
+                        }
+                        break;
+                    default:
+                        resultado = 'ERROR'
+                }
+
+                actualizarPantalla()
+                primerNumero = ''
+                segundoNumero = ''
+                operador = ''
+
+            }
+        }
+
+
+        const actualizarPantalla = () => {
+            const pantalla = document.querySelector(".resultado")
+            if (resultado !== null) {
+                pantalla.textContent = resultado;
+            } else {
+                pantalla.textContent = primerNumero + operador + segundoNumero;
+            }
+        }
+
+        document.querySelector(".grid-container-abajo").addEventListener("click", (evento) => {
+            const target = evento.target;
+            if (target.classList.contains("num-igual") || target.classList.contains("operaciones2")) {
+                if (target.textContent === '=') {
+                    realizarCalculo()
+                } else if (target.classList.contains('num-igual')) {
+                    capturarNumero(target.textContent)
+                } else {
+                    capturarOperador(target.textContent)
+                }
+
+            }
+        });
+
+
+        document.querySelector(".grid-container-arriba").addEventListener("click", (e) => {
+            const target = e.target;
+            const numeroPantalla = document.querySelector(".resultado")
+            if (target.classList.contains("operaciones1")) {
+                const textoBoton = target.textContent;
+                switch (textoBoton) {
+                    case 'C':
+                        primerNumero = ''
+                        segundoNumero = ''
+                        operador = ''
+                        actualizarPantalla()
+                        break;
+                    case '√':
+                        primerNumero = Math.sqrt(parseFloat(primerNumero)).toString()
+                        actualizarPantalla()
+                        break;
+                    case '%':
+                        primerNumero = (parseFloat(primerNumero) / 100).toString()
+                        actualizarPantalla()
+                        break;
+                    default:
+                        numeroPantalla.textContent += textoBoton
+                        break;
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
