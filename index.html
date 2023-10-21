@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Calculadora</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .contenedor {
+            width: 100%;
+            height: 100vh;
+            background-color: #232630;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calculadora {
+            width: 22%;
+            border-radius: 20px;
+            height: 60%;
+            background-color: aliceblue;
+            position: fixed;
+        }
+
+        footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            height: 5%;
+        }
+
+        .pantalla {
+            width: 90%;
+            height: 10%;
+            border-radius: 10px;
+            font-size: 3rem;
+            margin: auto;
+            margin-top: 13%;
+            display: flex;
+            padding: 5%;
+            align-items: center;
+            justify-content: flex-end;
+            color: #465485;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="calculadora">
+            <div class="pantalla">
+                <div class="resultado">0</div>
+            </div>
+            <div class="grid-container-arriba">
+                <div class="operaciones1">AC</div>
+                <div class="operaciones1">√</div>
+                <div class="operaciones1">%</div>
+                <div class="operaciones1">/</div>
+            </div>
+            <div class="grid-container-abajo">
+                <div class="num-igual" id="7">7</div>
+                <div class="num-igual" id="8">8</div>
+                <div class="num-igual" id="9">9</div>
+                <div class="num-igual" id="4">4</div>
+                <div class="num-igual" id="5">5</div>
+                <div class="num-igual" id="6">6</div>
+                <div class="num-igual" id="1">1</div>
+                <div class="num-igual" id="2">2</div>
+                <div class="num-igual" id="3">3</div>
+                <div class="num-igual" id="0">0</div>
+                <div class="num-igual" id=".">.</div>
+                <div class="operaciones1">x</div>
+                <div class="operaciones1">-</div>
+                <div class="operaciones1">+</div>
+                <div class="operaciones1">=</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Hecho por <a href="#">mortizp15 💙</a></p>
+    </footer>
+    <script type="text/javascript" src="/script.js"></script>
+</body>
+</html>
