@@ -75,7 +75,7 @@
 
         const capturarOperador = (op) => {
             if (resultado !== null) {
-                primerNumero = ''
+                primerNumero = resultado.toString()
                 segundoNumero = ''
                 operador = ''
                 resultado = null
@@ -91,6 +91,7 @@
 
         const realizarCalculo = () => {
             if (primerNumero !== '' && segundoNumero !== '' && operador !== '') {
+
                 const num1 = parseFloat(primerNumero)
                 const num2 = parseFloat(segundoNumero)
 
@@ -119,11 +120,13 @@
                 }
 
                 actualizarPantalla()
-                primerNumero = ''
+                primerNumero = resultado.toString()
                 segundoNumero = ''
                 operador = ''
 
             }
+
+    
         }
 
 

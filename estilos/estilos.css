@@ -167,7 +167,7 @@
             }
         }
 
-        @media (max-width: 1087px) {
+        @media (max-width: 1287px) {
             .calculadora {
                 width: 30%;
                 height: 50%;
@@ -189,7 +189,7 @@
         @media (max-width: 768px) {
             .calculadora {
                 width: 40%;
-                height: 60%;
+                height: 50%;
             }
 
             .pantalla {
@@ -205,9 +205,9 @@
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 680px) {
             .calculadora {
-                width: 60%;
+                width: 50%;
             }
 
             .pantalla {
@@ -220,10 +220,10 @@
             }
         }
 
-        @media (max-width: 385px) {
+        @media (max-width: 512px) {
             .calculadora {
-                width: 70%;
-                height: 65%;
+                width: 60%;
+                height: 40%;
             }
 
             .pantalla {
