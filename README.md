@@ -26,9 +26,3 @@ Si quieres contribuir a este proyecto, por favor sigue estos pasos:
 4. "Push" a la rama (`git push origin feature/tu-caracteristica`).
 5. Crea una nueva "Pull Request".
 
-## Contacto
-
-Si tienes alguna pregunta, no dudes en contactarme.
-
-- GitHub: [@mortizp15](https://github.com/mortizp15)
-- Correo Electrónico: maortizpelegrin@gmail.com
